@@ -6,6 +6,6 @@ import './style.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <PrimerComponente/>
+    <PrimerComponente titulo='Este es un promp que de tipo string' subtitulo />
   </StrictMode>,
 )
