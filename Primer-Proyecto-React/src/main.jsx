@@ -1,11 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import {PrimerComponente} from './PrimerComponente'
+import { ContadorApp } from './ContadorApp'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './style.css'
+
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <PrimerComponente titulo='Este es un promp que de tipo string' subtitulo />
+    <ContadorApp value={0} />
   </StrictMode>,
 )
