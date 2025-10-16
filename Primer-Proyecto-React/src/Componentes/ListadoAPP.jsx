@@ -9,8 +9,14 @@ const Items = ({ nombre, visto }) => {
 };
 
 export const ListadoAPP = () => {
- let listadoSecciones = [
-    { id: 1, nombre: "Instalaciones necesarias", visto: true },
+
+  const addTask = () => {
+    setArreglo([...arreglo,{id:8,nombre:'nuevo',visto:true}]);
+  };
+
+  let listadoSecciones = [
+
+  { id: 1, nombre: "Instalaciones necesarias", visto: true },
     { id: 2, nombre: "Usos de Vite", visto: true },
     { id: 3, nombre: "Componentes", visto: true },
     { id: 4, nombre: "Variables en JSX", visto: true },
@@ -24,9 +30,10 @@ export const ListadoAPP = () => {
     <>
       <h1>Listado de temas del curso</h1>
       <ol>
-        {arreglo.map((item) => (<Items key={item.id} nombre={item.nombre} visto={item.visto}></Items>
-        ))}
+        {arreglo.map((item) => <Items key={item.id} nombre={item.nombre} visto={item.visto}></Items>)}
       </ol>
+
+      <button onClick={() => addTask()}>Agregar Tarea</button>
     </>
   );
 };
