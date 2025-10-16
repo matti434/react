@@ -6,6 +6,8 @@ Las props son la coleccion de datos que un componente recibe del contenedor padr
 
 useState devuelve un array con exactamente dos elementos: El estado actual de esta variable de estado, establecida inicialmente en el estado inicial que proporcionaste. La funcion set que te permite cambiarlo a calquier otro valor en respuesta a la interaccion.
 
+## AddTodoForm.jsx
+
 #### 1- Declaracion de Componentes y Props
 
 ```js
@@ -91,6 +93,7 @@ setDate("");
 #### 1- Estructura Base del formulario
 
 return (
+
 <form onSubmit={handleSubmit} className="add-todo-form">
 )
 
@@ -157,7 +160,7 @@ React ejecuta la función onChange
 
 Se pasa el evento e con toda la información:
 
-``` js
+```js
 
 e = {
 target: <input type="text" value="">,
@@ -167,6 +170,7 @@ type: "change",
 }
 
 ```
+
 Se ejecuta setText("H")
 
 React actualiza el estado text a "H"
@@ -176,13 +180,109 @@ El componente se re-renderiza con el nuevo valor
 El input muestra "H" (porque value={text} ahora es "H")
 
 [Usuario escribe "H"] <br>
-         ↓ <br>
+↓ <br>
 [onChange se dispara] <br>
-         ↓ <br>
-[setText("H") se ejecuta]  <br>
-         ↓ <br>
-[Estado text cambia a "H"]  <br>
-         ↓ <br>
-[Componente se re-renderiza]  <br>
-         ↓ <br>
+↓ <br>
+[setText("H") se ejecuta] <br>
+↓ <br>
+[Estado text cambia a "H"] <br>
+↓ <br>
+[Componente se re-renderiza] <br>
+↓ <br>
 [Input muestra "H" en pantalla] <br>
+
+## TodoItem.jsx
+
+#### 1- Declaracion y Props
+
+```js
+const TodoItem = { todo, onDeletem, onToggleComplete };
+```
+
+. Recibe 3 props:
+
+- todo: Objeto con los datos de la tarea ({id,text,date,completed})
+- onDelete: Funcion para eliminar la tarea
+- onToggleComplete: Funcion para marcar como completada/pendiente
+
+#### 2- Estructura Principal con Clase Conficional
+
+```js
+<div className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+```
+
+Templete String y Clase Condicional:
+
+- `todo-item ${...}`: Template string que combina texto fijo y variable
+- todo.complete ? 'completed' : '' : Operador ternario
+  - Si todo.completed es true → agrega clase "completed"
+  - Si es false → agrega "" (string vacio)
+
+Resultado posibles:
+
+- Tarea NO completada: className="todo-item "
+- Tarea SÍ completada: className="todo-item completed"
+
+#### 3- Checkbox para Completar/Descompletar
+
+```html
+<input type="checkbox" checked={todo.completed} onChange={() =>
+onToggleComplete(todo.id)} className="checkbox" />
+```
+
+type="checkbox": Input tipo checkbo
+
+checked={todo.completed}:
+
+- si todo.completed = true → checkbox marcado ✅
+- si todo.completed = false → checkbox vacío ☐
+- checked={todo.completed}
+  - checked es una prop (atributo) de los inputs tipo checkbox en React
+  - NO es un método - es simplemente un valor booleano que le dice al checkbox si debe estar marcado o no
+  - Controla el estado visual del checkbox
+
+onChange = {() => onToggleComplete(todo.id)}:
+
+- Cuando el checkbox cambia,ejecuta onToggleComplete pasando el id de la tarea
+
+#### 4- Informacion de la Tarea
+``` js
+<div className="todo-info">
+  <span className="todo-text">{todo.text}</span>
+  <span className="todo-date">📅 {todo.date}</span>
+</div>
+```
+{todo.text}: El texto de la tarea (ej: "Estudiar React")
+
+{todo.date}: La fecha con un emoji (ej: "📅 2024-01-15")
+
+#### 5- Boton de Eliminar
+``` js
+<button
+  onClick={() => onDelete(todo.id)}
+  className="delete-button"
+>
+  🗑️ Eliminar
+</button>
+```
+onClick={() => onDelete(todo.id)}: Al hacer click, ejecuta onDelete pasando el id
+
+Eliminar: Texto con emoji de papelera
+
+#### Flujo de Eventos
+
+Cuando el usuario hace click en el checkbox:
+
+1. Checkbox cambia → onChange se ejecuta
+2. Llama a onToggleComplete(todo.id) 
+3. El componente PADRE (TodoList) recibe el id
+4. Busca la tarea con ese id y cambia completed: true/false
+5. TodoItem se re-renderiza con el nuevo estado
+
+Cuando el usuario hace click en "Eliminar":
+
+1. Botón click → onClick se ejecuta  
+2. Llama a onDelete(todo.id)
+3. El componente PADRE recibe el id
+4. Filtra el array de tareas, removiendo la que tiene ese id
+5. TodoItem DESAPARECE de la lista
