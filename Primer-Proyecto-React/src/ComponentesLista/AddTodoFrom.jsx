@@ -33,9 +33,18 @@ const AddTodoForm = () => {
 
         <div className="form-group">
             <label>Tarea:</label>
-            <input type="text" value={text} onChange />
+            <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Ej: Estudiar React hooks" className="todo-input"/>
         </div>
+        <div className="form-group">
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)}  className="date-input"/>
+        </div>
+
+        <button type="submit" className="add-button">
+          Agregar Tarea
+        </button>
     </form>
     </>
   )
 };
+
+export default AddTodoForm;
