@@ -1,12 +1,17 @@
-import { useState } from 'react';
-import TodoList from './components/TodoList/TodoList';
-import './styles/App.css';
+import TodoList from './ComponentesLista/TodoList';
+import './css/App.css';
 
 function App() {
   return (
     <div className="app">
-      <h1>📝 Mi Lista de Tareas</h1>
-      <TodoList />
+      <header>
+        <h1>✅ Mi Lista de Tareas</h1>
+        <p>Gestiona tus tareas diarias</p>
+      </header>
+      
+      <main>
+        <TodoList />
+      </main>
     </div>
   );
 }
