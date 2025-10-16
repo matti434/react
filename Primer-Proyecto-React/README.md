@@ -37,7 +37,7 @@ Ejemplo:
  #### 3- Manejo de Submit del Formulario
 
  const handleSubmit = (e) => {
-    (e).preventDefault();
+    e.preventDefault();
  }
 
  e: Es un evento del formulario (automaticamente pasado por el browser)
