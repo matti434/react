@@ -1,3 +1,4 @@
+import FormUsuario from './Componentes/FormUsuario';
 import TodoList from './ComponentesLista/TodoList';
 import './css/App.css';
 
@@ -12,6 +13,10 @@ function App() {
       <main>
         <TodoList />
       </main>
+      <section>
+        <h1>Formulario Usuario</h1>
+        <FormUsuario/>
+      </section>
     </div>
   );
 }
