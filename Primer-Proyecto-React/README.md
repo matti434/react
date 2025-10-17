@@ -2,6 +2,10 @@
 
 Las props son la coleccion de datos que un componente recibe del contenedor padre, y que puede usarse para redefinir los elementos de React que retornara el componente.
 
+## Que es un Hook en React ?
+
+Un Hook es una función especial de React que te permite "engancharte" a características de React desde componentes funcionales.
+
 ## Que es useState ?
 
 useState devuelve un array con exactamente dos elementos: El estado actual de esta variable de estado, establecida inicialmente en el estado inicial que proporcionaste. La funcion set que te permite cambiarlo a calquier otro valor en respuesta a la interaccion.
@@ -246,25 +250,26 @@ onChange = {() => onToggleComplete(todo.id)}:
 - Cuando el checkbox cambia,ejecuta onToggleComplete pasando el id de la tarea
 
 #### 4- Informacion de la Tarea
-``` js
+
+```js
 <div className="todo-info">
   <span className="todo-text">{todo.text}</span>
   <span className="todo-date">📅 {todo.date}</span>
 </div>
 ```
+
 {todo.text}: El texto de la tarea (ej: "Estudiar React")
 
 {todo.date}: La fecha con un emoji (ej: "📅 2024-01-15")
 
 #### 5- Boton de Eliminar
-``` js
-<button
-  onClick={() => onDelete(todo.id)}
-  className="delete-button"
->
+
+```js
+<button onClick={() => onDelete(todo.id)} className="delete-button">
   🗑️ Eliminar
 </button>
 ```
+
 onClick={() => onDelete(todo.id)}: Al hacer click, ejecuta onDelete pasando el id
 
 Eliminar: Texto con emoji de papelera
@@ -274,20 +279,18 @@ Eliminar: Texto con emoji de papelera
 Cuando el usuario hace click en el checkbox:
 
 1. Checkbox cambia → onChange se ejecuta
-2. Llama a onToggleComplete(todo.id) 
+2. Llama a onToggleComplete(todo.id)
 3. El componente PADRE (TodoList) recibe el id
 4. Busca la tarea con ese id y cambia completed: true/false
 5. TodoItem se re-renderiza con el nuevo estado
 
 Cuando el usuario hace click en "Eliminar":
 
-1. Botón click → onClick se ejecuta  
+1. Botón click → onClick se ejecuta
 2. Llama a onDelete(todo.id)
 3. El componente PADRE recibe el id
 4. Filtra el array de tareas, removiendo la que tiene ese id
 5. TodoItem DESAPARECE de la lista
-
-
 
 ## FormUsuario.jsx
 
@@ -297,7 +300,7 @@ const resultado = validateForm(formData);
 const isValid = resultado.isValid;
 const validationErrors = resultado.errors;
 
-Esto es lo mismo quye esto 
+Esto es lo mismo quye esto
 
 onst { isValid, errors: validationErrors } = validateForm(formData);
 
@@ -311,7 +314,7 @@ validateForm,isValid y errors (lo cambio a validationErrors por que ya existen e
 
 if (errors["nombre"]) {  // ← true, porque errors.nombre existe
   setErrors({
-    ...errors,           // { nombre: "Error", email: "Email inválido" }  
+    ...errors,           // { nombre: "Error", email: "Email inválido" }
     [name]: ""           // { nombre: "" } ← Limpiamos solo este error
   });
 }
@@ -322,6 +325,7 @@ errors = {
   email: "Email inválido"  // ← Este error se mantiene
 }
 ```
+
 ```
 setErrors({}) - Limpiar TODOS los errores
 javascript
@@ -330,11 +334,83 @@ setErrors({});
 // Después: errors = {} ← TODOS los errores desaparecen
 ```
 
-
 ## Snippets mas utiles para React
 
+Abreviatura Genera
+rafc React Arrow Function Component with Export
+rfce React Function Component with Export
+rfc React Function Component
 
-Abreviatura	Genera
-rafc	React Arrow Function Component with Export
-rfce	React Function Component with Export
-rfc	React Function Component
+## Pasos
+
+1- En el caso del formulario inccie con el snippet rafc
+2- Creo primero lo que es el form con los input, cada uno separado con un div
+(Creo que al comienzo es mejor empezar asi para entender que valores usaremos)
+3- Ahora el input va a estar formado por type="" value={FormData.nombre}(este va explicado en el paso 4) y onChange={"nombre que pongamos a la funcion"}
+4- Aqui usamos los hook de React
+
+```
+const [formData, setFormData] = useState(valorInicial);
+//     ↑          ↑              ↑         ↑
+//     |          |              |         └── Valor inicial (ej: "", 0, [], {})
+//     |          |              └── Hook de React que crea estado
+//     |          └── FUNCIÓN para ACTUALIZAR el estado
+//     └── VARIABLE que contiene el valor ACTUAL del estado
+```
+
+De esta forma usaremos formData."algo" para insertar el valor actual del estado
+Y usaremos setFormData para ir actualizando el estado
+
+5-onChange={handleInputChange} es un metodo que usaremos para extraer informacion del evento
+6-
+
+``` js
+const handleInputChange = (event) => {
+  const { name, value } = event.target;
+
+  setFormData({
+    ...formData,
+    [name]:value
+  });
+  }
+```
+
+que recibira lo realizado en la funcion flecha - const{name,value} = event.target;
+event.target es el elemento HTML que disparo el evento, en este caso el input donde esta el usuario escribiendo.
+
+// Cuando el usuario escribe, event.target contiene:
+```js
+event.target = {
+  name: "email",
+  value: "ana@email.com", 
+  type: "email",
+  // ... otras propiedades del input
+}
+```
+
+### Spead Operator (Operador de propagacion)
+
+Por que se escribe asi ? 
+```js
+// formData actual = { nombre: "Ana", email: "ana@email.com", password: "123" }
+...formData 
+// Se convierte en: nombre: "Ana", email: "ana@email.com", password: "123"
+```
+
+[campoQueCambio]: nuevoValor
+```js
+ // Si campoQueCambio = "nombre" y nuevoValor = "Juan"
+[campoQueCambio]: nuevoValor
+// Se convierte en: nombre: "Juan"
+```
+
+```js
+// Resultado final:
+{
+  ...formData,                    // nombre: "Ana", email: "ana@email.com", password: "123"
+  [campoQueCambio]: nuevoValor    // nombre: "Juan" ← SOBREESCRIBE este campo
+}
+
+// Objeto final = { nombre: "Juan", email: "ana@email.com", password: "123" }
+```
+7- 
