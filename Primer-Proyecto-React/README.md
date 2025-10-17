@@ -286,3 +286,19 @@ Cuando el usuario hace click en "Eliminar":
 3. El componente PADRE recibe el id
 4. Filtra el array de tareas, removiendo la que tiene ese id
 5. TodoItem DESAPARECE de la lista
+
+
+
+## FormUsuario.jsx
+
+const resultado = validateForm(formData);
+// resultado = { isValid: true, errors: { nombre: "Error", ... } }
+
+const isValid = resultado.isValid;
+const validationErrors = resultado.errors;
+
+Esto es lo mismo quye esto 
+
+onst { isValid, errors: validationErrors } = validateForm(formData);
+
+validateForm,isValid y errors (lo cambio a validationErrors por que ya existen error en el componente) son metodos que usamos en validations.js

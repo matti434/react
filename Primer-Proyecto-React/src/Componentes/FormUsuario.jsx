@@ -24,12 +24,21 @@ export function FormUsuario() {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    const {isValid,validationErros:validationErros} = validateForm(formData);
+
+    if(!isValid){
+        setErrors(validationErros)
+    }
     setError("");
     console.log("Datos del usuario:", {
       Name: inputName,
       Email: inputEmail,
     });
   };
+
+
+
   return (
     <>
       <form typeof="submit" onSubmit={onSubmit}>
