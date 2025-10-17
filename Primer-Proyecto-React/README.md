@@ -302,3 +302,39 @@ Esto es lo mismo quye esto
 onst { isValid, errors: validationErrors } = validateForm(formData);
 
 validateForm,isValid y errors (lo cambio a validationErrors por que ya existen error en el componente) son metodos que usamos en validations.js
+
+#### Como funciona el error
+
+```
+// name = "nombre" (viene del input)
+// value = "A" (lo que el usuario escribió)
+
+if (errors["nombre"]) {  // ← true, porque errors.nombre existe
+  setErrors({
+    ...errors,           // { nombre: "Error", email: "Email inválido" }  
+    [name]: ""           // { nombre: "" } ← Limpiamos solo este error
+  });
+}
+
+// Resultado FINAL:
+errors = {
+  nombre: "",           // ← Error limpiado
+  email: "Email inválido"  // ← Este error se mantiene
+}
+```
+```
+setErrors({}) - Limpiar TODOS los errores
+javascript
+// Antes: errors = { nombre: "Error", email: "Error", password: "Error" }
+setErrors({});
+// Después: errors = {} ← TODOS los errores desaparecen
+```
+
+
+## Snippets mas utiles para React
+
+
+Abreviatura	Genera
+rafc	React Arrow Function Component with Export
+rfce	React Function Component with Export
+rfc	React Function Component
