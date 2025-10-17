@@ -1,6 +1,8 @@
 import FormUsuario from './Componentes/FormUsuario';
 import TodoList from './ComponentesLista/TodoList';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
+import { FormPersonal } from './Componentes/FormPersonal';
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
       </main>
       <section>
         <h1>Formulario Usuario</h1>
-        <FormUsuario/>
+        <FormPersonal/>
       </section>
     </div>
   );

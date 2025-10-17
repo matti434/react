@@ -413,4 +413,62 @@ Por que se escribe asi ?
 
 // Objeto final = { nombre: "Juan", email: "ana@email.com", password: "123" }
 ```
-7- 
+7-  Pasamos al metodo onSubmit
+ Lo desglozare en varias partes
+ - 1
+```js
+ const onSubmit = (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    const { isValid, validationErros: erros } = validateForm(formData);
+
+    if (!isValid) {
+      setErrors(validationErros);
+      return;
+    }
+```
+Creamos la variable onSubmit que recibe el evento
+usamos el preventDefault que es un elemento de HTML que impide que la pagina se recargue cuando usamos el formulario
+- Para que sirve setIsSubmitting(true) - controla el estado de "cargado" o "enviado" del formulario
+Lo usamos de forma visual cuando esta en True empezara a mostrar "cargando" y cuando se pasa a false vuelve a mostrar "Enviar" todo esto es lo que se ve en el boton
+- ¿Qué hace const { isValid, errors: validationErrors }? -  extrae dos valores que devuelve invalidForm(formData) (este es un metodo que usamos en validation.js)
+
+// validateForm SIEMPRE devuelve un objeto con esta forma:
+{
+  isValid: true,      // o false
+  errors: {}          // objeto con mensajes de error
+}
+
+```js
+// Al hacer destructuring:
+const { isValid, errors: validationErrors } = validateForm(formData);
+// ↑ Esto crea dos variables:
+// - isValid = true/false
+// - validationErrors = { nombre: "Error", email: "Error" } o {}
+```
+- Que hace if(!isValid)
+
+```js
+if (!isValid) {
+  setErrors(validationErrors);   // 1. Mostrar errores en pantalla
+  setIsSubmitting(false);        // 2. Quitar estado "cargando"
+  return;                        // 3. Detener la ejecución
+}
+```
+
+
+#### Flujo completo
+
+1. 📝 USUARIO ESCRIBE <br>
+   ---------↓---------
+2. 🔄 onChange={handleInputChange} se activa <br>
+   ---------↓--------- 
+3. 💾 handleInputChange guarda en formData <br>
+   ---------↓---------
+4. 🖱️ USUARIO HACE CLIC EN "ENVIAR" <br>
+   ---------↓---------
+5. ✅ onSubmit valida todo con validateForm() <br>
+   ---------↓---------
+6. ❌ Si hay errores → los muestra y SE DETIENE <br>
+   ---------↓---------
+7. ✅ Si todo está correcto → procesa y LIMPIA formData
