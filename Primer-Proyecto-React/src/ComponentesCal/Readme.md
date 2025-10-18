@@ -1,5 +1,5 @@
 1. ¿Qué es htmlFor?
-htmlFor es el equivalente en React del atributo for en HTML normal:
+   htmlFor es el equivalente en React del atributo for en HTML normal:
 
 ```js
 // En HTML puro
@@ -8,17 +8,19 @@ htmlFor es el equivalente en React del atributo for en HTML normal:
 // En React (JSX)
 <label htmlFor="bill">Monto:</label>
 ```
+
 ¿Por qué? Porque for es una palabra reservada en JavaScript (se usa en loops for), entonces React usa htmlFor para evitar conflictos.
 
 Función: Conectar el label con el input, para que al hacer click en el label, el input reciba el foco.
 
 2. ¿Por qué onChange se escribe así?
-Tienes razón en tu duda. La sintaxis correcta es:
+   Tienes razón en tu duda. La sintaxis correcta es:
 
 ```js
 onChange={(e) => onChange(Number(e.target.value))}
 No e.value.target. El orden correcto es e.target.value.
 ```
+
 Desglose:
 
 e = evento del input
@@ -28,31 +30,32 @@ e.target = elemento que disparó el evento (el input)
 e.target.value = valor actual del input
 
 3. ¿Cómo se reciben los valores del padre?
-En el componente hijo (BillInput):
+   En el componente hijo (BillInput):
 
 ```js
 export default function BillInput({ value, onChange }) {
   // value = viene del padre (estado 'bill')
   // onChange = viene del padre (función 'setBill')
-  
+
   return (
     <input
-      value={value}           // ← Valor actual del padre
+      value={value} // ← Valor actual del padre
       onChange={(e) => onChange(Number(e.target.value))} // ← Actualiza al padre
     />
   );
 }
 ```
+
 En el componente padre (TipCalculator):
 
 ```js
 export default function TipCalculator() {
   const [bill, setBill] = useState(0); // ← Estado local
-  
+
   return (
-    <BillInput 
-      value={bill}        // ← Se envía el valor al hijo
-      onChange={setBill}  // ← Se envía la función para actualizar
+    <BillInput
+      value={bill} // ← Se envía el valor al hijo
+      onChange={setBill} // ← Se envía la función para actualizar
     />
   );
 }
@@ -74,7 +77,7 @@ Ejemplo visual del flujo:
 const [bill, setBill] = useState(100);
 
 // Envía al hijo:
-<BillInput value={bill} onChange={setBill} />
+<BillInput value={bill} onChange={setBill} />;
 
 // HIJO - Recibe y usa
 function BillInput({ value, onChange }) {
@@ -84,3 +87,26 @@ function BillInput({ value, onChange }) {
   // 3. onChange(150) = ejecuta setBill(150) en el padre
 }
 ```
+
+### TipPercentage
+
+```js
+return (
+  <div>
+    <label>Porcentaje de propina:</label>
+    <div className="percentage-buttons">
+      {percentage.map((percent) => {
+        <button
+          type="button"
+          key={percent}
+          className={value === percent && !isCustom ? "active" : ""}
+          onClick={() => handlePredefinedTip(percent)}
+        >
+          {percent}%
+        </button>;
+      })}
+    </div>
+  </div>
+);
+```
+
