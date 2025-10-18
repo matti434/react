@@ -7,18 +7,7 @@ import { FormPersonal } from './Componentes/FormPersonal';
 function App() {
   return (
     <div className="app">
-      <header>
-        <h1>✅ Mi Lista de Tareas</h1>
-        <p>Gestiona tus tareas diarias</p>
-      </header>
-      
-      <main>
-        <TodoList />
-      </main>
-      <section>
-        <h1>Formulario Usuario</h1>
-        <FormPersonal/>
-      </section>
+      <TipCalculator/>      
     </div>
   );
 }

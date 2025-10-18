@@ -33,16 +33,22 @@ export function FormUsuario() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setIsSubmitting(true);
-    const { isValid, validationErros: validationErros } =
-      validateForm(formData);
-    validateForm(formData);
 
-    /* Es lo mismo que lo de arriba
-    const resultado = validateForm(formData);
-    const isValid = resultado.isValid;
-    const validationErrors = resultado.errors;
-    */
+    setIsSubmitting(true);
+    const { isValid, validationErros: validationErros } = validateForm(formData);
+   
+    
+/*const resultado = validateForm(formData); // resultado = { isValid: true, errors: { nombre: "Error", ... } }
+
+
+  const isValid = resultado.isValid; 
+  const validationErrors = resultado.errors;
+
+  Esto es lo mismo quye esto
+
+  const { isValid, errors: validationErrors } = validateForm(formData);*/
+
+
     if (!isValid) {
       setErrors(validationErros);
       return;
