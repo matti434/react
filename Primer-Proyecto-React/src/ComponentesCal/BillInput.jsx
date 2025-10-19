@@ -9,6 +9,7 @@ export const BillInput = (value, onChange) => {
      id="bill"
      value={value}  // ← Valor actual del padre
      onChange={(e) => onChange(Number(e.target.value))} // ← Actualiza al padre
+     placeholder='0.00'
      /> 
   )
 }

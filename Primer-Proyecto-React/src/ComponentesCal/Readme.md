@@ -110,3 +110,61 @@ return (
 );
 ```
 
+1. percentages.map(percent => (...))
+percentages = [5, 10, 15, 20, 25]
+
+.map() crea 5 botones (uno por cada porcentaje)
+
+Por cada iteración, percent vale: 5, luego 10, luego 15, etc.
+
+2. className={value === percent && !isCustom ? "active" : ""}
+Esta es la condición para aplicar la clase CSS "active":
+
+Caso 1: Botón activo (tiene clase "active")
+
+``` jsx
+// Cuando AMBAS condiciones son verdaderas:
+value === percent    // El valor actual coincide con este botón
+&& 
+!isCustom           // Y NO estamos usando un valor personalizado
+Ejemplo:
+```
+```jsx
+// Si el usuario hizo click en "15%":
+value = 15
+percent = 15 (en este botón)
+isCustom = false
+
+// Resultado: value === 15 && !false → true && true → true
+// El botón de 15% se marca como "active"
+Caso 2: Botón inactivo (sin clase "active")
+jsx
+// Ejemplo: Usuario escribió "18%" personalizado
+value = 18
+percent = 15 (en este botón)  
+isCustom = true
+```
+// Resultado: value === 15 && !true → false && false → false
+// Ningún botón se marca como "active"
+3. ¿Por qué necesitamos !isCustom?
+Para evitar esta situación confusa:
+
+Sin !isCustom (PROBLEMA):
+
+```jsx
+// Usuario escribe "15" en el input personalizado
+value = 15
+isCustom = true
+
+// El botón de 15% se marcaría como "active" 
+// aunque el usuario no lo haya seleccionado
+// ¡Esto sería confuso!
+Con !isCustom (SOLUCIÓN):
+
+jsx
+// Usuario escribe "15" en el input personalizado
+value = 15
+isCustom = true
+```
+// El botón de 15% NO se marca porque isCustom = true
+// Solo se marca si el usuario hizo click directamente en el botón

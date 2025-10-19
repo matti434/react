@@ -1,12 +1,12 @@
 import { Button } from "bootstrap";
 import React, { useState } from "react";
 
-export const TipPercentage = () => {
-  const percentage = [5, 10, 15, 20, 15];
+export const TipPercentage = ({value,onChange}) => {
+  const percentage = [5, 10, 15, 20, 25];
   const [isCustom, setIsCuston] = useState(false);
   const [customTip, setCustonTip] = useState("");
 
-  const handlePredefinedTip = (e) => {
+  const handleCustomTipChange = (e) => {
     const inputValue = e.target.value;
 
     setCustonTip(inputValue);
@@ -20,7 +20,7 @@ export const TipPercentage = () => {
     }
   };
 
-  const handlePredefinedChange = (percent) => {
+  const handlePredefinedTip = (percent) => {
     onChange(percent);
     setCustonTip(""); // Limpiamos el input personalizado
     setIsCuston(false); // Marcamos que no es personalizado
@@ -35,7 +35,7 @@ export const TipPercentage = () => {
     <div>
       <label>Porcentaje de propina:</label>
       <div className="percentage-buttons">
-        {percentage.map((percent) => {
+        {percentage.map((percent) => (
           <button
             type="button"
             key={percent}
@@ -43,12 +43,12 @@ export const TipPercentage = () => {
             onClick={() => handlePredefinedTip(percent)}
           >
             {percent}%
-          </button>;
-        })}
+          </button>
+        ))}
 
         <div className="custom-tip">
           <input
-            type="text"
+            type="number"
             min="0"
             max="100"
             value={customTip}
@@ -58,6 +58,9 @@ export const TipPercentage = () => {
           />
           <span>%</span>
         </div>
+      </div>
+      <div style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+        {isCustom ? `Personalizado: ${value}%` : `Predefinido: ${value}%`}
       </div>
     </div>
   );
