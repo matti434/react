@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './PeopleCounter.css';
 export const PeopleCounter = ({value,onChange}) => {
   
 
@@ -13,11 +13,12 @@ export const PeopleCounter = ({value,onChange}) => {
   
   
   return (
-    <div>
-      <h3>Numero de personas: {value}</h3>
+    <div className="people-counter">
+      <label className="people-counter__label">Numero de personas</label>
       <input
+        className="people-counter__input"
         type="number"
-        min="0"
+        min="1"
         max="100"
         value={value}
         onChange={handlePeopleChange}
