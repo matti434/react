@@ -1,8 +1,8 @@
 import React from "react";
-const ResultDisplay = ({ results }) => {
 
-   // Validación para evitar errores cuando results es undefined
-  if (!results) {
+const ResultDisplay = ({ results }) => {
+  // Validación más robusta
+  if (!results || typeof results !== 'object') {
     return (
       <div>
         <h3>Resultados</h3>
@@ -10,13 +10,33 @@ const ResultDisplay = ({ results }) => {
       </div>
     );
   }
+
+  // Función segura para formatear números
+  const formatCurrency = (value) => {
+    if (typeof value !== 'number' || isNaN(value)) {
+      return "0.00";
+    }
+    return value.toFixed(2);
+  };
+
   return (
     <div>
       <h3>Resultados</h3>
-      <p>💰 Propina total: <strong>${results.tipAmount.toFixed(2)}</strong></p>
-      <p>💵 Total con propina: <strong>${results.totalWithTip.toFixed(2)}</strong></p>
-      <p>👤 Propina por persona: <strong>${results.tipPerPerson.toFixed(2)}</strong></p>
-      <p>👥 Total por persona: <strong>${results.totalPerPerson.toFixed(2)}</strong></p>
+      <p>
+        💰 Propina total: <strong>${formatCurrency(results.tipAmount)}</strong>
+      </p>
+      <p>
+        💵 Total con propina:{" "}
+        <strong>${formatCurrency(results.totalWithTip)}</strong>
+      </p>
+      <p>
+        👤 Propina por persona:{" "}
+        <strong>${formatCurrency(results.tipPerPerson)}</strong>
+      </p>
+      <p>
+        👥 Total por persona:{" "}
+        <strong>${formatCurrency(results.totalPerPerson)}</strong>
+      </p>
     </div>
   );
 };

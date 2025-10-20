@@ -18,7 +18,7 @@ const PeopleCounter = ({value,onChange}) => {
       <label className="people-counter__label">Numero de personas</label>
       <input
         className="people-counter__input"
-        type="number"
+        type="text"
         min="1"
         max="100"
         value={value}
