@@ -27,6 +27,8 @@ export const ListadoAPP = () => {
         {arreglo.map((item) => (<Items key={item.id} nombre={item.nombre} visto={item.visto}></Items>
         ))}
       </ol>
+
+      <button onClick={() => addTask()}>Agregar tarea</button>
     </>
   );
 };
