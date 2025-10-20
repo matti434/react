@@ -1,17 +1,26 @@
+// BillInput.jsx
 import React from 'react'
 
 const BillInput = ({value, onChange}) => {
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+    
+    // Permite solo números y punto decimal
+    if (inputValue === '' || /^\d*\.?\d*$/.test(inputValue)) {
+      onChange(inputValue);
+    }
+  };
+
   return (
     <div>
       <label htmlFor="bill">Monto de la cuenta:</label>
       <input
-        type="number" 
+        type="text"  // Cambiado de "number" a "text"
         id="bill"
         value={value}
-        onChange={(e) => onChange(Number(e.target.value) || 0)}
+        onChange={handleChange}
         placeholder='0.00'
-        min="0"
-        step="0.01"
+        inputMode="decimal" // Muestra teclado numérico en móviles
       /> 
     </div>
   )
