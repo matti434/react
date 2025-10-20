@@ -1,4 +1,15 @@
-export const ResultDisplay = ({ results }) => {
+import React from "react";
+const ResultDisplay = ({ results }) => {
+
+   // Validación para evitar errores cuando results es undefined
+  if (!results) {
+    return (
+      <div>
+        <h3>Resultados</h3>
+        <p>Ingresa los datos para calcular</p>
+      </div>
+    );
+  }
   return (
     <div>
       <h3>Resultados</h3>
@@ -9,3 +20,5 @@ export const ResultDisplay = ({ results }) => {
     </div>
   );
 };
+
+export default ResultDisplay;

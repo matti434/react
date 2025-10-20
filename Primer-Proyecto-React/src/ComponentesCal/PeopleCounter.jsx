@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './PeopleCounter.css';
-export const PeopleCounter = ({value,onChange}) => {
+
+const PeopleCounter = ({value,onChange}) => {
   
 
   const handlePeopleChange = (e) => {
@@ -27,3 +28,5 @@ export const PeopleCounter = ({value,onChange}) => {
     </div>
   );
 };
+
+export default PeopleCounter;

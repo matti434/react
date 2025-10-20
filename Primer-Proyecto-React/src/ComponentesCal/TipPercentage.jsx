@@ -1,7 +1,6 @@
-import { Button } from "bootstrap";
 import React, { useState } from "react";
 
-export const TipPercentage = ({value,onChange}) => {
+const TipPercentage = ({value,onChange}) => {
   const percentage = [5, 10, 15, 20, 25];
   const [isCustom, setIsCuston] = useState(false);
   const [customTip, setCustonTip] = useState("");
@@ -26,10 +25,6 @@ export const TipPercentage = ({value,onChange}) => {
     setIsCuston(false); // Marcamos que no es personalizado
   };
 
-  // Para SABER qué está seleccionado:
-  console.log("Valor actual:", value);
-  console.log("Es personalizado?", isCustom);
-  console.log("Input personalizado:", customTip);
 
   return (
     <div>
@@ -52,7 +47,7 @@ export const TipPercentage = ({value,onChange}) => {
             min="0"
             max="100"
             value={customTip}
-            onChange={handlePredefinedChange}
+            onChange={handleCustomTipChange}
             placeholder="Personalizado"
             className={isCustom ? "active" : ""}
           />
@@ -65,3 +60,5 @@ export const TipPercentage = ({value,onChange}) => {
     </div>
   );
 };
+
+export default TipPercentage;

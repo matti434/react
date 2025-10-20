@@ -5,9 +5,9 @@ import PeopleCounter from "./PeopleCounter";
 import ResultDisplay from "./ResultDisplay";
 
 const TipCalculator = () => {
-  const [bill, setBill] = useState({});
-  const [tipPercentaje, setTipPercentaje] = useState({});
-  const [peopleCounter, setPeopleCounter] = useState(0);
+  const [bill, setBill] = useState(0);
+  const [tipPercentaje, setTipPercentaje] = useState(10);
+  const [peopleCounter, setPeopleCounter] = useState(1);
 
   const calculateResults = () => {
     
