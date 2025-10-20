@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const BillInput = (value, onChange) => {
+const BillInput = (value, onChange) => {
     // value= viene del padre (estado 'bill')
     // onChange = viene del padre (funcion 'setBill')
   return (
@@ -13,3 +13,5 @@ export const BillInput = (value, onChange) => {
      /> 
   )
 }
+
+export default BillInput;

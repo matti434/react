@@ -1,9 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import { PeopleCounter } from "./PeopleCounter";
-import { TipPercentage } from "./TipPercentage";
+import React, { useState } from "react";
+import BillInput from "./BillInput";
+import TipPercentage from "./TipPercentage";
+import PeopleCounter from "./PeopleCounter";
+import ResultDisplay from "./ResultDisplay";
 
-export const TipCalculator = () => {
+const TipCalculator = () => {
   const [bill, setBill] = useState({});
   const [tipPercentaje, setTipPercentaje] = useState({});
   const [peopleCounter, setPeopleCounter] = useState(0);
@@ -43,3 +44,5 @@ export const TipCalculator = () => {
     </div>
   );
 };
+
+export default TipCalculator;
