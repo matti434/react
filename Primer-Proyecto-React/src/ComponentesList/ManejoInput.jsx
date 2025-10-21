@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 
 const ManejoInput = ({value,onChange,onAgregarTarea}) => {
    
-
   const manejoButton = () => {
     onAgregarTarea(value);
   }
   
   return (
-    <div>
+    <div className='text-center m-5'>
         <input 
         placeholder='Agrega nueva tarea'
         type="text"

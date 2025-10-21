@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { ManejoInput } from './ManejoInput.jsx'
+import ManejoInput from './ManejoInput.jsx'
 
-export const EstadoPrincipal = () => {
+const EstadoPrincipal = () => {
     
     const [tarea,setTarea] = useState("");
     const [listaTareas,setListaTarea] = useState([]);
@@ -17,3 +17,5 @@ export const EstadoPrincipal = () => {
     </div>
   )
 }
+
+export default EstadoPrincipal;
