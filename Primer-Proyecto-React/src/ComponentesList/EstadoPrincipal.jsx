@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import ManejoInput from './ManejoInput'
+import { ManejoInput } from './ManejoInput.jsx'
+
 export const EstadoPrincipal = () => {
-  
+    
     const [tarea,setTarea] = useState("");
-    const [listaTareas,setListaTarea] = useState({});
+    const [listaTareas,setListaTarea] = useState([]);
 
     const manejarAgregarTarea = (nuevaTarea) =>{
 

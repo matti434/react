@@ -1,18 +1,25 @@
 import React, { useState } from 'react'
 
-export const ManejoInput = ({value,onChange}) => {
+const ManejoInput = ({value,onChange,onAgregarTarea}) => {
    
-  const manejoInput = (e) =>{
-    onChange(e.target.value);
+
+  const manejoButton = () => {
+    onAgregarTarea(value);
   }
-    return (
+  
+  return (
     <div>
         <input 
         placeholder='Agrega nueva tarea'
         type="text"
         value={value}
-        onChange={manejoInput}
+        onChange={(e) => onChange(e.target.value)}
          />
+        <button onClick={manejoButton}>
+          Agregar Tarea
+        </button>
     </div>
   )
 }
+
+export default ManejoInput;
