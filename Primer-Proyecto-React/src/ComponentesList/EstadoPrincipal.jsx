@@ -12,7 +12,7 @@ export const EstadoPrincipal = () => {
     }
     return (
     <div>
-        <ManejoInput id={id} value= {tarea} onChange={setTarea} onAgregarTarea= {manejarAgregarTarea} />
+        <ManejoInput value= {tarea} onChange={setTarea} onAgregarTarea= {manejarAgregarTarea} />
     </div>
   )
 }
