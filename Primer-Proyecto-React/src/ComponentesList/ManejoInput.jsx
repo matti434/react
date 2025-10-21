@@ -2,14 +2,8 @@ import React, { useState } from 'react'
 
 export const ManejoInput = ({value,onChange}) => {
    
-  const onChange = (e) =>{
-    e.preventDefault 
-     
-    if(value !== ""){
-       
-    
-    }
-
+  const manejoInput = (e) =>{
+    onChange(e.target.value);
   }
     return (
     <div>
@@ -17,7 +11,7 @@ export const ManejoInput = ({value,onChange}) => {
         placeholder='Agrega nueva tarea'
         type="text"
         value={value}
-        onChange={onChange}
+        onChange={manejoInput}
          />
     </div>
   )
