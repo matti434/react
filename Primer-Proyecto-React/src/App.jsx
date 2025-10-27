@@ -4,7 +4,7 @@ import PeopleCounter from './ComponentesCal/PeopleCounter';
 import EstadoPrincipal from './ComponentesList/EstadoPrincipal'
 import 'bootstrap/dist/css/bootstrap.min.css';
 */
-import Lista from "./PracticaClase/ListaDeTareas/Lista"
+import Lista from "./PracticaClase/ListaDeTareas/views/Lista"
 import './css/App.css';
 
 function App() {
