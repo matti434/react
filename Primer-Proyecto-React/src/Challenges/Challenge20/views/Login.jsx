@@ -2,11 +2,18 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import FormLogin from './LoginComponentes/FormLogin';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function Login() {
   const location = useLocation(); //devuelve el objeto de ubicacion actual
   const navigate = useNavigate();
   const showModal = new URLSearchParams(location.search).get('modal') === 'login';
+ 
+  const [login,setLogin] = useState({
+    usuario:"",
+    contraseña:""
+  })
+
 
   const cerrarModal = () => {
     navigate(location.pathname, { replace: true }); // location.pathname = "/" si uso navigate(-1) va hacia atras en historial pero puede scarme de la aplicacion

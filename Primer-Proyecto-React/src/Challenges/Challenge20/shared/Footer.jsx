@@ -28,9 +28,10 @@ const Footer = () => {
                 rounded
                 width={120}
                 height={120}
+                className="mx-3"
               ></Image>
-              <h2 className="h4 mb-0">Mercado Libre</h2>
-              <p className="mb-0">lo mejor está llegando</p>
+              <h2 className="h4 mb-0 mx-2">Mercado Libre</h2>
+              <p className="mb-0 mx-2">lo mejor está llegando</p>
             </Stack>
           </Col>
           <Col xs={12} lg={4} className="mb-4 mb-lg-0 mt-3">

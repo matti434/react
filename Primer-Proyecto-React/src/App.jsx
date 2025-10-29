@@ -4,7 +4,7 @@ import Menu from './Challenges/Challenge20/shared/Menu';
 import Login from "./Challenges/Challenge20/views/Login";
 import Registro from './Challenges/Challenge20/views/Registro';
 import Footer from "./Challenges/Challenge20/shared/Footer";
-import './css/App.css';
+import './Challenges/Challenge20/views/App.css';
 
 function App() {
   return (

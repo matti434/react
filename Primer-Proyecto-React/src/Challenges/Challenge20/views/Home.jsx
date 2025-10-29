@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import CarouselHome from "./HomeComponentes/CarouselHome";
 import Cards from "./HomeComponentes/Cards";
+import Productos from "./Productos"
 
 const Home = () => {
   return (
@@ -16,9 +17,9 @@ const Home = () => {
         </div>
         <div>
           <CarouselHome />
+          <Productos />
         </div>
       </Container>
-       <Cards/>
     </>
   );
 };

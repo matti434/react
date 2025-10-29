@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  --font-heading: 'Montserrat', sans-serif;    /* Para títulos y brand */
+  --font-body: 'Lato', sans-serif;            /* Para texto normal */
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+.navbar-brand, h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
