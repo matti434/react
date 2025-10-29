@@ -1,12 +1,27 @@
-import {Container,Row,Col,Stack,Image,Nav,NavLink} from "react-bootstrap";
+import {Container,Row,Col,Stack,Image,Nav,NavLink,}from "react-bootstrap";
+import { Link, useNavigate } from "react-router";
 
 const Footer = () => {
+
+  const navigate= useNavigate();
+
+  const abrirLogin = () => {
+   navigate("/?modal=login")  
+  }
+
+   const abrirRegistro = () => {
+   navigate("/?modal=registro")  
+  }
+
   return (
     <footer>
       <Container fluid>
         <Row className="bg-primary text-white p-4 aling-item-center">
           <Col xs={12} lg={4} className="mb-4 mb-lg-0">
-            <Stack gap={2} className="align-items-center align-items-lg-start text-center text-lg-start">
+            <Stack
+              gap={2}
+              className="align-items-center align-items-lg-start text-center text-lg-start"
+            >
               <Image
                 src="https://cdn.worldvectorlogo.com/logos/mercadolibre.svg"
                 alt="Mercado Libre"
@@ -22,18 +37,26 @@ const Footer = () => {
             <div className="text-center">
               <h5 className="mb-3">Links útiles</h5>
               <Nav className="flex-column gap-2 justify-content-center">
-                <Nav.Link href="#" className="text-white px-0">
+                <Nav.Link as={Link} to="/" className="text-white px-0">
                   Home
                 </Nav.Link>
                 <Nav.Link href="#" className="text-white px-0">
                   Contact
                 </Nav.Link>
-                <Nav.Link href="#" className="text-white px-0">
+                <span
+                  className="text-white px-0 Nav-Link"
+                  onClick={abrirLogin}
+                  style={{ cursor: "pointer" }}
+                >
                   Login
-                </Nav.Link>
-                <Nav.Link href="#" className="text-white px-0">
+                </span>
+                <span 
+                  className="text-white px-0 Nav-Link"
+                  onClick={abrirRegistro}
+                  style={{ cursor: "pointer" }}
+                >
                   Register
-                </Nav.Link>
+                </span>
               </Nav>
             </div>
           </Col>
