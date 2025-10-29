@@ -473,5 +473,38 @@ if (!isValid) {
    ---------↓---------
 7. ✅ Si todo está correcto → procesa y LIMPIA formData
 
+---
+---
 
-### 
+### aria-label y aria-describedby
+
+id="basic-addon1"
+Identificador único del elemento
+
+Se usa para conectar elementos relacionados
+
+aria-label="Usuario"
+Etiqueta para lectores de pantalla
+
+Cuando no hay texto visible que describa el input
+
+El lector dirá: "Usuario, edit text"
+
+aria-describedby="basic-addon1"
+Conecta el input con su descripción
+
+Le dice al lector: "Este input está descrito por el elemento con id basic-addon1"
+
+El lector leerá: "Usuario, edit text, @"
+
+### FormLogin y Login
+
+Usuario hace click en "Ingresar"
+
+HTML5 detecta form="login-form" en el botón
+
+Busca el form con id="login-form"
+
+Ejecuta el onSubmit de ese form
+
+Se dispara manejarEnvio en FormLogin

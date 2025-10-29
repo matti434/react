@@ -1,47 +1,52 @@
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 
-const FormLogin = () => {
+const FormLogin = ({ value, onChange, onSubmit }) => {
+  const manejarCambios = (campo, valor) => {
+    onChange({
+      ...value,
+      [campo]: valor,
+    });
+  };
+
+  const manejarSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  };
   return (
-     <>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-        />
-      </InputGroup>
+    <>
+      <Form onSubmit={manejarSubmit} id="login-form">
+        <InputGroup className="mb-3">
+          <InputGroup.Text id="complemento1">👤</InputGroup.Text>
+          <Form.Control
+            placeholder="Usuario"
+            aria-label="Usuario"
+            aria-describedby="complemento1"
+            value={value.usuario || ""}
+            onChange={(e) => manejarCambios("usuario", e.target.value)}
+            required
+          />
+        </InputGroup>
 
-      <InputGroup className="mb-3">
-        <Form.Control
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
-      </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Text id="complemento2">🔒</InputGroup.Text>
+          <Form.Control
+            type="password"
+            placeholder="Contraseña"
+            aria-label="Contraseña"
+            aria-describedby="complemento2"
+            value={value.contraseña || ""}
+            onChange={(e) => manejarCambios("contraseña", e.target.value)}
+            required
+          />
+        </InputGroup>
 
-      <Form.Label htmlFor="basic-url">Your vanity URL</Form.Label>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon3">
-          https://example.com/users/
-        </InputGroup.Text>
-        <Form.Control id="basic-url" aria-describedby="basic-addon3" />
-      </InputGroup>
-
-      <InputGroup className="mb-3">
-        <InputGroup.Text>$</InputGroup.Text>
-        <Form.Control aria-label="Amount (to the nearest dollar)" />
-        <InputGroup.Text>.00</InputGroup.Text>
-      </InputGroup>
-
-      <InputGroup>
-        <InputGroup.Text>With textarea</InputGroup.Text>
-        <Form.Control as="textarea" aria-label="With textarea" />
-      </InputGroup>
+        <Form.Group className="mb-3">
+          <Form.Check type="checkbox" label="Recordarme" />
+        </Form.Group>
+      </Form>
     </>
   );
-}
+};
 
 export default FormLogin;

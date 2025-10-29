@@ -19,6 +19,17 @@ function Login() {
     navigate(location.pathname, { replace: true }); // location.pathname = "/" si uso navigate(-1) va hacia atras en historial pero puede scarme de la aplicacion
   }
 
+  const manejarSubmit = () => {
+    if(!login.usuario || !login.contraseña){
+      alert('Por favor completa todos los campos');
+      return;
+    }
+
+    setLogin({usuario:"",contraseña:""});
+
+    cerrarModal();
+  };
+
   if (!showModal) return null;
 
   return (
@@ -49,13 +60,19 @@ function Login() {
             <Modal.Title>Iniciar Sesión</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <FormLogin />
+            <FormLogin value={login} onChange={setLogin} onSubmit={manejarSubmit} />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={cerrarModal}>
               Cerrar
             </Button>
-            <Button variant="primary">Ingresar</Button>
+            <Button 
+            variant="primary"
+            type='submit'
+            form='login-form'
+            >
+              Ingresar
+              </Button>
           </Modal.Footer>
         </Modal.Dialog>
       </div>
