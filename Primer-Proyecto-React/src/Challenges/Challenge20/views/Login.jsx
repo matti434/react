@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import FormLogin from './LoginComponentes/FormLogin';
-import { useLocation, useNavigate } from 'react-router-dom'; // Corregí la importación
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Login() {
   const location = useLocation();
@@ -9,7 +9,7 @@ function Login() {
   const showModal = new URLSearchParams(location.search).get('modal') === 'login';
 
   const cerrarModal = () => {
-    navigate(location.pathname, { replace: true });
+    navigate(location.pathname, { replace: true }); // location.pathname = "/" si uso navigate(-1) va hacia atras en historial pero puede scarme de la aplicacion
   }
 
   if (!showModal) return null;

@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-const FormLogin = () => {
+const FormRegistro = () => {
   return (
      <>
       <InputGroup className="mb-3">
@@ -43,5 +43,4 @@ const FormLogin = () => {
     </>
   );
 }
-
-export default FormLogin;
+export default FormRegistro;

@@ -12,7 +12,7 @@ const Menu = () => {
     navigate("/?modal=login");
   }
   const abrirRegistro = () => {
-    navigate("/?modalRegistro=registro");
+    navigate("/?modal=registro"); //Misma clave,diferente valor
   }
 
 
