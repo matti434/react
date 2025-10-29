@@ -13,7 +13,7 @@ function Login() {
         </Modal.Header>
 
         <Modal.Body>
-          <p>Modal body text goes here.</p>
+          
         </Modal.Body>
 
         <Modal.Footer>
