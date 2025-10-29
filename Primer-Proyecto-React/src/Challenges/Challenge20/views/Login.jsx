@@ -4,7 +4,7 @@ import FormLogin from './LoginComponentes/FormLogin';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 function Login() {
-  const location = useLocation();
+  const location = useLocation(); //devuelve el objeto de ubicacion actual
   const navigate = useNavigate();
   const showModal = new URLSearchParams(location.search).get('modal') === 'login';
 

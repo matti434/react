@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 
 function CarouselHome() {
   return (
-    <Container>
+    <Container fluid>
     <Carousel fade>
       <Carousel.Item>
           <img src="https://http2.mlstatic.com/storage/developers-site-cms-admin/CDV_MS/282219444009-210519-mla-mlc-mco-mlu-mercado-libre-el-mejor-lugar-para-publicitar-tus-productos-header.jpg" 
