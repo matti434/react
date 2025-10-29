@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import CarouselHome from "./Home/CarouselHome";
+import CarouselHome from "./HomeComponentes/CarouselHome";
 
 
 const Home = () => {

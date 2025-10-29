@@ -3,9 +3,19 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaShoppingCart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Menu = () => {
+  const navigate = useNavigate();
+  
+  const abrirLogin = () => {
+    navigate("/?modal=login");
+  }
+  const abrirRegistro = () => {
+    navigate("/?modalRegistro=registro");
+  }
+
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary ">
       <Container className="d-flex justify-content-between">
@@ -15,8 +25,18 @@ const Menu = () => {
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <NavDropdown title="Cuenta" id="basic-nav-dropdown"> 
-              <NavDropdown.Item href="#login">Login</NavDropdown.Item>
-              <NavDropdown.Item href="#register">Register</NavDropdown.Item>
+              <NavDropdown.Item
+               onClick={abrirLogin}
+               style={{cursor:"pointer"}}
+              >
+                Login
+              </NavDropdown.Item>
+              <NavDropdown.Item
+              onClick={abrirRegistro}
+              style={{cursor:"pointer"}}
+              >
+                Register
+                </NavDropdown.Item>
               <NavDropdown.Item href="#contact">Contact</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#cart">
