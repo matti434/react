@@ -1,11 +1,12 @@
 import { Container,Row,Col,Card } from "react-bootstrap";
+import { Link } from "react-router";
 
 const Cards = () => {
   return (
      <Container fluid className="mt-5 mb-5 d-flex justify-content-center" >
         <Row className="g-5">
           <Col xs={12} md={6} lg={4}>
-            <Card style={{ width: "18rem" }}>
+            <Card as={Link} to="/producto/1" style={{ width: "18rem" }}>
               <Card.Body>
                 <Card.Title className="text-center">Producto 1</Card.Title>
                 <Card.Text>
@@ -14,7 +15,9 @@ const Cards = () => {
                     alt="cosadeMosquitos"
                     style={{ height: "200px", objectFit: "cover" }}
                   />
+                  <p className="text-center">Mata mosquitos</p>
                 </Card.Text>
+                
               </Card.Body>
             </Card>
           </Col>
@@ -28,6 +31,7 @@ const Cards = () => {
                     alt="usb"
                     style={{ height: "200px", objectFit: "cover" }}
                   />
+                  <p className="text-center">Mata mosquitos</p>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -42,7 +46,9 @@ const Cards = () => {
                     alt="stanley"
                     style={{ height: "200px", objectFit: "cover" }}
                   />
+                  <p className="text-center">Mata mosquitos</p>
                 </Card.Text>
+                 
               </Card.Body>
             </Card>
           </Col>

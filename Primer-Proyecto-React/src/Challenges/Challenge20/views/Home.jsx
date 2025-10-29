@@ -1,8 +1,7 @@
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import CarouselHome from "./HomeComponentes/CarouselHome";
-import Cards from "./HomeComponentes/Cards";
+import Cards from "./ProductosComponentes/Cards";
 import Productos from "./Productos"
 
 const Home = () => {
