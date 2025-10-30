@@ -15,9 +15,8 @@ const Cards = () => {
                     alt="cosadeMosquitos"
                     style={{ height: "200px", objectFit: "cover" }}
                   />
-                  <p className="text-center">Mata mosquitos</p>
                 </Card.Text>
-                
+                  <p className="text-center">Mata mosquitos</p> 
               </Card.Body>
             </Card>
           </Col>
@@ -31,8 +30,8 @@ const Cards = () => {
                     alt="usb"
                     style={{ height: "200px", objectFit: "cover" }}
                   />
-                  <p className="text-center">Mata mosquitos</p>
                 </Card.Text>
+                  <p className="text-center">Mata mosquitos</p>
               </Card.Body>
             </Card>
           </Col>
@@ -46,8 +45,8 @@ const Cards = () => {
                     alt="stanley"
                     style={{ height: "200px", objectFit: "cover" }}
                   />
-                  <p className="text-center">Mata mosquitos</p>
                 </Card.Text>
+                  <p className="text-center">Mata mosquitos</p>
                  
               </Card.Body>
             </Card>
