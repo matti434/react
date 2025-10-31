@@ -13,6 +13,12 @@
     return true;
  }
 
- export const validarLogin = (usuario,contraseña) =>{
-   
- }
+export const validarLogin = (usuario, contraseña) => {
+  // Primero verificar el estado de los datos
+  verificarYOfrecerRestauracion();
+  
+  const usuarios = JSON.parse(localStorage.getItem(CLAVE_USUARIOS)) || [];
+  const usuarioEncontrado = usuarios.find(u => 
+    u.usuario === usuario && u.contraseña === contraseña
+  );
+}
