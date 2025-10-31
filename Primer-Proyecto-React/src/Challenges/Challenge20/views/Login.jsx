@@ -30,8 +30,6 @@ function Login() {
     setLoading(true);
     setError("");
 
-    try
-
 
     setLogin({usuario:"",contraseña:""});
 
