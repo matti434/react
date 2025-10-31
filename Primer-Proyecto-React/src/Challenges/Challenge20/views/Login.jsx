@@ -13,6 +13,8 @@ function Login() {
     usuario:"",
     contraseña:""
   })
+  const [loading,setLoading] = useState(false); //para mostrar la carga
+  const [error,setError] = useState(""); // Para manejar errores
 
 
   const cerrarModal = () => {
@@ -24,6 +26,12 @@ function Login() {
       alert('Por favor completa todos los campos');
       return;
     }
+      
+    setLoading(true);
+    setError("");
+
+    try
+
 
     setLogin({usuario:"",contraseña:""});
 

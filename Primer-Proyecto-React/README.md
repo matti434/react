@@ -508,3 +508,27 @@ Busca el form con id="login-form"
 Ejecuta el onSubmit de ese form
 
 Se dispara manejarEnvio en FormLogin
+
+
+### API - Flujo basico
+
+El usuario escribe su email y contraseña.
+
+Al enviar el formulario (onSubmit), React hace una petición POST a la API:
+
+fetch("https://api.ejemplo.com/login", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email, password }),
+});
+
+
+La API responde algo como:
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": { "name": "Matías", "email": "matias@example.com" }
+}
+
+
+La app guarda ese token (por ejemplo en localStorage o sessionStorage) y redirige al usuario a otra página.
