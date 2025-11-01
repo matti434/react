@@ -2,7 +2,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import FormLogin from './LoginComponentes/FormLogin';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { validarLogin,guardarSesion,inicializarSistemaBackpu,verificarYOfrecerRestauracion,cerrarSesion } from '../utils/authHelpers';
 
 function Login() {
   const location = useLocation(); //devuelve el objeto de ubicacion actual
@@ -17,23 +18,58 @@ function Login() {
   const [error,setError] = useState(""); // Para manejar errores
 
 
+  useEffect(() =>{
+    inicializarSistemaBackpu();
+    verificarYOfrecerRestauracion();
+  },[]);
+
   const cerrarModal = () => {
     navigate(location.pathname, { replace: true }); // location.pathname = "/" si uso navigate(-1) va hacia atras en historial pero puede scarme de la aplicacion
   }
 
-  const manejarSubmit = () => {
-    if(!login.usuario || !login.contraseña){
+  const manejarSubmit = async () => {
+    if(!login.usuario.trim() || !login.contraseña.trim()){
       alert('Por favor completa todos los campos');
       return;
     }
+
+    if(login.usuario.length<3){
+      alert("El usuario debe tener mas de 3 caracteres");
+      return;
+    }
+
+    if(login.contraseña.length<4){
+      alert("La contraseña debe tener mas de 4 caracteres");
+      return;
+    }
+    /* agregar mas condiciones*/
       
     setLoading(true);
     setError("");
 
+    try{
+      const usuarioValido= validarLogin(login.usuario,login.contraseña);
 
-    setLogin({usuario:"",contraseña:""});
-
-    cerrarModal();
+      if(usuarioValido){
+        guardarSesion(usuarioValido);
+        
+        setLogin({usuario:"",contraseña:""});
+        
+        cerrarModal();
+        
+        alert("Bienvenido");
+      }
+      else{
+        setError("Usuario o contraseña incorrectos");
+        alert("Credenciales incorrectas");
+      }
+    }catch(error){
+      setError("Error al iniciar sesion");
+      console.error("Error en el login",error);
+    }finally{
+      setLoading(false);
+    }
+     
   };
 
   if (!showModal) return null;

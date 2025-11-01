@@ -81,7 +81,7 @@ export const validarLogin = (usuario, contraseña) => {
     u.contraseña === contraseña;
 
   if (!usuarioEncontrado) {
-    console.warn(`Intento de Login fallido - Usuario: "${usuario}" `);
+    console.warn(`Intento de Login fallido - Usuario o contraseña incorrectos `);
 
     /* agregar cuanta cantidad de intentos permitodos*/
     return null;
