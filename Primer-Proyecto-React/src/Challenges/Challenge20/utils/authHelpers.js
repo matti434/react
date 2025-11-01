@@ -13,6 +13,33 @@ const actualizarBackup = (usuarios) => {
   console.log('✅Backup actualizado:', usuarios.length, 'usuarios');
 }
 
+// de texto a objeto
+export const verificarYOfrecerRestauracion= () => {
+  const usuarioActuales = JSON.parse(localStorage.getItem(CLAVE_USUARIOS)) || [];
+  const usuariosBackup = JSON.parse(localStorage.getItem(CLAVE_BACKUP)) || [];
+
+  if(usuarioActuales.length === 0 && usuariosBackup.length > 0){
+    const restaurar = window.confirm(
+      `No se encontro usuarios en el sistema.\n\nSe detecto una copia de seguridad con ${usuariosBackup} usuario(s).\n\n ¿Quieres restaurar los usuarios 
+      desde la copia de emergencia?`
+    );
+
+    if(restaurar){
+      localStorage.setItem(CLAVE_USUARIOS,JSON.stringify(usuariosBackup));
+      console.log('✅ Usuarios restaurados desde backup:', usuariosBackup.length);
+      return true;
+    }
+  }
+
+
+  if(usuarioActuales>0){
+    actualizarBackup(usuarioActuales);
+  }
+
+  return false
+}
+
+
 
 
 
