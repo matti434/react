@@ -77,11 +77,13 @@ export const validarLogin = (usuario, contraseña) => {
   }
 
   const usuarioEncontrado =
-    usuarios.find((u) => u.usuario.toLowerCase() === usuario.toLowerCase()) &&
-    u.contraseña === contraseña;
+    usuarios.find((u) => u.usuario.toLowerCase() === usuario.toLowerCase() &&
+    u.contraseña === contraseña);
 
   if (!usuarioEncontrado) {
-    console.warn(`Intento de Login fallido - Usuario o contraseña incorrectos `);
+    console.warn(
+      `Intento de Login fallido - Usuario o contraseña incorrectos `
+    );
 
     /* agregar cuanta cantidad de intentos permitodos*/
     return null;
@@ -95,9 +97,55 @@ export const validarLogin = (usuario, contraseña) => {
   };
 };
 
+export const validarRegistro = (usuario, contraseña,email) => {
+  verificarYOfrecerRestauracion();
+
+  const usuarios = JSON.parse(localStorage.getItem(CLAVE_USUARIOS)) || [];
+
+  const usuarioEncontrado =
+    usuarios.find((u) => u.usuario.toLowerCase() === usuario.toLowerCase());
+
+  const emailEncontrado = usuario.find((u) => u.email === email);
+  
+  if (usuarioEncontrado) {
+    console.warn(
+      `Usuario ya existe`
+    );
+    return null;
+  }
+  if(emailEncontrado){
+    console.warn(
+      'El Email ya se encuentra registrado'
+    )
+    return null;
+  }
+
+
+
+  console.log("✅ Registro exitoso");
+  return {
+    usuario: usuario,
+    email: email,
+    contraseña: contraseña,
+    fechaRegistro: new Date().toISOString()
+  };
+};
+
+export const guardarUsuarioRegistro = (usuario,contraseña,email) => {
+  
+  const datosUsuarios= validarRegistro=(usuario,contraseña,email);
+
+  const usuarios = JSON.parse(localStorage.getItem(CLAVE_USUARIOS)) || [];
+  usuarios.push(datosUsuarios);
+  localStorage.setItem(CLAVE_USUARIOS,JSON.stringify(usuarios));
+  actualizarBackup(usuarios);
+  
+  console.log("✅ Usuario registrado exitosamente:", usuario);
+  return datosUsuarios;
+}
 
 export const guardarSesion = (usuarioData) => {
-  localStorage.setItem(CLAVE_USUARIO_ACTUAL,JSON.stringify(usuarioData));
+  localStorage.setItem(CLAVE_USUARIO_ACTUAL, JSON.stringify(usuarioData));
 };
 
 export const obtenerUsuarioActual = () => {
@@ -106,17 +154,17 @@ export const obtenerUsuarioActual = () => {
 
 export const cerrarSesion = () => {
   localStorage.removeItem(CLAVE_USUARIO_ACTUAL);
-}
+};
 
 // obtener estadisticas
-export const obtenerEstadisticas = () =>{
+export const obtenerEstadisticas = () => {
   const usuarios = JSON.parse(localStorage.getItem(CLAVE_USUARIOS)) || [];
   const backup = JSON.parse(localStorage.getItem(CLAVE_BACKUP)) || [];
 
-  return{
-    usuariosActuales:usuarios.length,
+  return {
+    usuariosActuales: usuarios.length,
     usuariosBackup: backup.length,
-    ultimaActualizacion: new Date().toLocaleString()
+    ultimaActualizacion: new Date().toLocaleString(),
   };
 };
 
@@ -125,7 +173,11 @@ export const forzarRestauracionDesdeBackup = () => {
   const usuariosBackup = JSON.parse(localStorage.getItem(CLAVE_BACKUP)) || [];
   if (usuariosBackup.length > 0) {
     localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(usuariosBackup));
-    console.log('✅ Restauración forzada desde backup:', usuariosBackup.length, 'usuarios');
+    console.log(
+      "✅ Restauración forzada desde backup:",
+      usuariosBackup.length,
+      "usuarios"
+    );
     return true;
   }
   return false;

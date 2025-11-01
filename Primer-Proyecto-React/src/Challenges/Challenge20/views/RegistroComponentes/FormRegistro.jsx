@@ -1,46 +1,71 @@
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+import Form from "react-bootstrap/Form";
+import  InputGroup  from "react-bootstrap/InputGroup";
+const FormRegistro = ({ value, onChange, onSubmit, loading }) => {
+  
+  const manejarCambios = (campo, valor) => {
+    onChange({
+      ...value,
+      [campo]: valor,
+    });
+  };
 
-const FormRegistro = () => {
+  const manejarSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  };
+
   return (
-     <>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-        />
-      </InputGroup>
+    <>
+      <Form onSubmit={manejarSubmit} id="registro-form">
+        <InputGroup className="mb-3">
+          <InputGroup.Text>👤</InputGroup.Text>
+          <Form.Control
+            placeholder="Usuario"
+            value={value.usuario || ""}
+            onChange={(e) => manejarCambios("usuario", e.target.value)}
+            required
+            disabled={loading}
+          />
+        </InputGroup>
 
-      <InputGroup className="mb-3">
-        <Form.Control
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
-      </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Text>📧</InputGroup.Text>
+          <Form.Control
+            type="email"
+            placeholder="Email"
+            value={value.email || ""}
+            onChange={(e) => manejarCambios("email", e.target.value)}
+            required
+            disabled={loading}
+          />
+        </InputGroup>
 
-      <Form.Label htmlFor="basic-url">Your vanity URL</Form.Label>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon3">
-          https://example.com/users/
-        </InputGroup.Text>
-        <Form.Control id="basic-url" aria-describedby="basic-addon3" />
-      </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Text>🔒</InputGroup.Text>
+          <Form.Control
+            type="password"
+            placeholder="Contraseña"
+            value={value.contraseña || ""}
+            onChange={(e) => manejarCambios("contraseña", e.target.value)}
+            required
+            disabled={loading}
+          />
+        </InputGroup>
 
-      <InputGroup className="mb-3">
-        <InputGroup.Text>$</InputGroup.Text>
-        <Form.Control aria-label="Amount (to the nearest dollar)" />
-        <InputGroup.Text>.00</InputGroup.Text>
-      </InputGroup>
-
-      <InputGroup>
-        <InputGroup.Text>With textarea</InputGroup.Text>
-        <Form.Control as="textarea" aria-label="With textarea" />
-      </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Text>✅</InputGroup.Text>
+          <Form.Control
+            type="password"
+            placeholder="Confirmar Contraseña"
+            value={value.confirmarContraseña || ""}
+            onChange={(e) => manejarCambios("confirmarContraseña", e.target.value)}
+            required
+            disabled={loading}
+          />
+        </InputGroup>
+      </Form>
     </>
   );
-}
+};
+
 export default FormRegistro;

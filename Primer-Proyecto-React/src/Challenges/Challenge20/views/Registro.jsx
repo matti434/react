@@ -9,6 +9,19 @@ const Registro = () => {
   const showModal = new URLSearchParams(location.search).get('modal')==='registro';
   
 
+  const [registro, setRegistro] = useState({
+    usuario:"",
+    email:"",
+    contrasena:"",
+    repetirContrasena:""
+  });
+
+  const manejarSubmit = async () =>{
+    if(!registro.usuario.trim() && !registro.contrasena.trim()){
+      alert
+    }
+  };
+
   const cerrarModal = () => {
     navigate(location.pathname, { replace: true });
   }
@@ -43,7 +56,7 @@ const Registro = () => {
             <Modal.Title>Crear Cuenta</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <FormRegistro />
+            <FormRegistro  value={registro}  />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={cerrarModal}>

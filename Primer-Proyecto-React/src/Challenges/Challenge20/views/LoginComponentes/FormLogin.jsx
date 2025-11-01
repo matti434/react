@@ -1,7 +1,8 @@
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
-const FormLogin = ({ value, onChange, onSubmit }) => {
+const FormLogin = ({ value, onChange, onSubmit, loading }) => {
+  
   const manejarCambios = (campo, valor) => {
     onChange({
       ...value,
@@ -13,6 +14,7 @@ const FormLogin = ({ value, onChange, onSubmit }) => {
     e.preventDefault();
     onSubmit();
   };
+
   return (
     <>
       <Form onSubmit={manejarSubmit} id="login-form">
@@ -25,6 +27,7 @@ const FormLogin = ({ value, onChange, onSubmit }) => {
             value={value.usuario || ""}
             onChange={(e) => manejarCambios("usuario", e.target.value)}
             required
+            disabled={loading} 
           />
         </InputGroup>
 
@@ -38,15 +41,20 @@ const FormLogin = ({ value, onChange, onSubmit }) => {
             value={value.contraseña || ""}
             onChange={(e) => manejarCambios("contraseña", e.target.value)}
             required
+            disabled={loading} 
           />
         </InputGroup>
 
         <Form.Group className="mb-3">
-          <Form.Check type="checkbox" label="Recordarme" />
+          <Form.Check 
+            type="checkbox" 
+            label="Recordarme" 
+            disabled={loading}
+          />
         </Form.Group>
       </Form>
     </>
   );
 };
 
-export default FormLogin;
+export default FormLogin; // ✅ CORREGIR NOMBRE
