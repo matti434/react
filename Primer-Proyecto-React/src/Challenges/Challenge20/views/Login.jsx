@@ -3,12 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import FormLogin from "./LoginComponentes/FormLogin";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {
-  validarLogin,
-  guardarSesion,
-  inicializarSistemaBackpu,
-  verificarYOfrecerRestauracion
-} from "../utils/authHelpers";
+import {validarLogin,guardarSesion,inicializarSistemaBackup,verificarYOfrecerRestauracion} from "../utils/authHelpers";
 
 function Login() {
   const location = useLocation(); //devuelve el objeto de ubicacion actual
@@ -24,7 +19,7 @@ function Login() {
   const [error, setError] = useState(""); // Para manejar errores
 
   useEffect(() => {
-    inicializarSistemaBackpu();
+    inicializarSistemaBackup();
     verificarYOfrecerRestauracion();
   }, []);
 

@@ -1,8 +1,10 @@
+import { jsx } from "react/jsx-runtime";
+
 const CLAVE_USUARIOS = "usuarios";
 const CLAVE_BACKUP = "backupUsuarios";
 const CLAVE_USUARIO_ACTUAL = "usuarioActual";
 
-export const inicializarSistemaBackpu = () => {
+export const inicializarSistemaBackup = () => {
   if (!localStorage.getItem(CLAVE_BACKUP)) {
     localStorage.setItem(CLAVE_BACKUP, JSON.stringify([]));
   }
@@ -105,7 +107,7 @@ export const validarRegistro = (usuario, contraseña,email) => {
   const usuarioEncontrado =
     usuarios.find((u) => u.usuario.toLowerCase() === usuario.toLowerCase());
 
-  const emailEncontrado = usuario.find((u) => u.email === email);
+  const emailEncontrado = usuarios.find((u) => u.email === email);
   
   if (usuarioEncontrado) {
     console.warn(
@@ -133,7 +135,7 @@ export const validarRegistro = (usuario, contraseña,email) => {
 
 export const guardarUsuarioRegistro = (usuario,contraseña,email) => {
   
-  const datosUsuarios= validarRegistro=(usuario,contraseña,email);
+  const datosUsuarios= validarRegistro(usuario,contraseña,email);
 
   const usuarios = JSON.parse(localStorage.getItem(CLAVE_USUARIOS)) || [];
   usuarios.push(datosUsuarios);
@@ -149,7 +151,7 @@ export const guardarSesion = (usuarioData) => {
 };
 
 export const obtenerUsuarioActual = () => {
-  localStorage.getItem(CLAVE_USUARIO_ACTUAL) !== null;
+  return JSON.parse(localStorage.getItem(CLAVE_USUARIO_ACTUAL))
 };
 
 export const cerrarSesion = () => {

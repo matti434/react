@@ -6,7 +6,7 @@ const Productos = () => {
   return (
     <>
     <Container className='mt-5'>
-    <div className='text-center display-3'>Productos</div>
+    <div className='text-center display-3 text-white'>Productos</div>
     <Cards/>
     </Container>
     </>

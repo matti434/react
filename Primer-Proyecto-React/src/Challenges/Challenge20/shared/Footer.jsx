@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <footer>
       <Container fluid>
-        <Row className="bg-primary text-white p-4 aling-item-center">
+        <Row className="text-white p-4 aling-item-center">
           <Col xs={12} lg={4} className="mb-4 mb-lg-0">
             <Stack
               gap={2}

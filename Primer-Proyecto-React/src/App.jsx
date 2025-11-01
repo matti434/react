@@ -5,24 +5,21 @@ import Login from "./Challenges/Challenge20/views/Login";
 import Registro from './Challenges/Challenge20/views/Registro';
 import Footer from "./Challenges/Challenge20/shared/Footer";
 import './Challenges/Challenge20/views/App.css';
-import { verificarYOfrecerRestauracion, inicializarSistemaBackpu } from './Challenges/Challenge20/utils/authHelpers';
+import { verificarYOfrecerRestauracion, inicializarSistemaBackup } from './Challenges/Challenge20/utils/authHelpers';
 
 function App() {
-
-    verificarYOfrecerRestauracion();
-    inicializarSistemaBackpu();
+  verificarYOfrecerRestauracion();
+  inicializarSistemaBackup();
 
   return (
     <Router>
-      <div className="app">
-        <Menu/>
-        <Login />
-        <Registro />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Footer/>      
-      </div>
+      <Menu />
+      <Login />
+      <Registro />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Footer />
     </Router>
   );
 }
