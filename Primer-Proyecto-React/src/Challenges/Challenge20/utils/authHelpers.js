@@ -6,8 +6,12 @@ export const inicializarSistemaBackpu = () => {
   if(!localStorage.getItem(CLAVE_BACKUP)){
     localStorage.setItem(CLAVE_BACKUP,JSON.stringify([]));
   }
+};
+// de obeto/array a texto
+const actualizarBackup = (usuarios) => {
+  localStorage.setItem(CLAVE_BACKUP,JSON.stringify(usuarios));
+  console.log('✅Backup actualizado:', usuarios.length, 'usuarios');
 }
-
 
 
 

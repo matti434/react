@@ -509,6 +509,68 @@ Ejecuta el onSubmit de ese form
 
 Se dispara manejarEnvio en FormLogin
 
+### LocalStorage
+
+una pequeña base de datos del navegador
+
+Solo podés acceder con métodos como:
+
+localStorage.setItem("clave", "valor"); // guardar
+localStorage.getItem("clave");          // leer
+localStorage.removeItem("clave");       // borrar
+
+
+Ejemplo:
+
+localStorage.setItem("nombre","Matias");
+console.log(localStorage.getItem("nombre")); // "Matias"
+
+Constantes de "CLAVE_..."
+
+const CLAVE_USUARIOS = 'usuarios';
+const CLAVE_BACKUP = 'backupUsuarios';
+const CLAVE_USUARIO_ACTUAL = 'usuarioActual';
+
+Son como etiquetas dentro del localStorage. Veamos localStorage como un estante de cajas, y cada clave es una etiqueta de la caja:
+
+| Clave (`key`)      | Contenido (`value`)                   |
+| ------------------ | ------------------------------------- |
+| `"usuarios"`       | Lista principal de usuarios           |
+| `"backupUsuarios"` | Copia de seguridad de los usuarios    |
+| `"usuarioActual"`  | Usuario que inició sesión actualmente |
+
+```jsx
+if (!localStorage.getItem(CLAVE_BACKUP)) {
+}
+```
+Aqui pregunto si hay algo guardado en localStorage llamado backupUsuarios.
+ - Si lo hay, no hace nada
+ - si no existe (pasaria la primera vez que inicio la APP) entra al bloque if
+
+``` jsx
+if (!localStorage.getItem(CLAVE_BACKUP)) {
+  localStorage.setItem(CLAVE_BACKUP, JSON.stringify([]));
+}
+```
+Esto crea la clave 'backupUsuarios' y guarda un array vacio convertido en texto ("[]")
+
+**Es como preparar una base de datos vacia para mas adelante**
+
+JSON.stringify() → convierte objeto/array a texto.
+
+JSON.parse() → convierte texto otra vez a objeto.
+
+``` jsx
+const usuarios = [{ nombre: "Matías", email: "matias@gmail.com" }];
+
+// Guardar
+localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+// Leer
+const guardados = JSON.parse(localStorage.getItem("usuarios"));
+console.log(guardados[0].nombre); // "Matías"
+```
+
 
 ### API - Flujo basico
 
