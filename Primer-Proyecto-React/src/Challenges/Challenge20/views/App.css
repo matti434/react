@@ -18,17 +18,17 @@ body {
     0deg,
     rgba(221, 255, 0, 1) 36%,
     rgba(133, 250, 0, 1) 54%,
-    rgba(7, 114, 181, 1) 83%
+    rgb(7, 80, 238) 83%
   );
 }
 
 .navbar {
-  background-color: #d8f804 !important;
+  background-color: #48fd01 !important;
 }
 
 .footer-custom,
 footer {
-  background-color: #0772b5 !important;
+  background-color: #100ce7 !important;
 }
 
 .navbar-brand,

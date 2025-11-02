@@ -594,3 +594,19 @@ La API responde algo como:
 
 
 La app guarda ese token (por ejemplo en localStorage o sessionStorage) y redirige al usuario a otra página.
+
+
+### Por que async en Login
+
+agrego para luego agregar un await para cuando use una API o base de datos
+
+### onChange onSubmit
+
+padre: Login.jsx
+hijo: FormLogin.jsx
+
+El padre le envia las funciones que el hijo va a usar.
+
+El hijo es quien atiende el mostrador y le da una hoja al usuario (usuario,contraseña) el usuario escribe y el hijo muestra lo que el usuario va escribiendo
+(o los cambios que se realizan) con el onChange, el padre copia lo que ve. 
+Al final el hijo avisa con el onSubmit que el usuario envio el formulario y que debe revisarlo, el padre revisa y valida si todo es correcto
