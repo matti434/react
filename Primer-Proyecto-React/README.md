@@ -610,3 +610,41 @@ El padre le envia las funciones que el hijo va a usar.
 El hijo es quien atiende el mostrador y le da una hoja al usuario (usuario,contraseña) el usuario escribe y el hijo muestra lo que el usuario va escribiendo
 (o los cambios que se realizan) con el onChange, el padre copia lo que ve. 
 Al final el hijo avisa con el onSubmit que el usuario envio el formulario y que debe revisarlo, el padre revisa y valida si todo es correcto
+
+### new URLSearchParams(location.search)
+
+Esa parte sirve para leer los parámetros que hay en la URL.
+
+Por ejemplo, si la URL es:
+
+https://midominio.com/?modal=login
+
+ location.search devuelve:
+
+"?modal=login"
+
+
+ new URLSearchParams(location.search) crea un objeto que te deja acceder fácilmente a esos valores.
+
+ ¿Qué hace .get("modal")?
+
+Ese método busca el valor que está asociado al parámetro modal.
+
+new URLSearchParams(location.search).get("modal")
+
+
+En el ejemplo anterior devolvería:
+
+"login"
+
+¿Qué hace la comparación === "login"?
+
+Compara si el valor que obtuvo en la URL es exactamente "login".
+
+Entonces:
+
+Si la URL es ...?modal=login → devuelve true
+
+Si la URL es ...?modal=registro → devuelve false
+
+Si no hay ningún ?modal= en la URL → devuelve false

@@ -8,8 +8,7 @@ import {validarLogin,guardarSesion,inicializarSistemaBackup,verificarYOfrecerRes
 function Login() {
   const location = useLocation(); //devuelve el objeto de ubicacion actual
   const navigate = useNavigate();
-  const showModal =
-    new URLSearchParams(location.search).get("modal") === "login";
+  const showModal = new URLSearchParams(location.search).get("modal") === "login";
 
   const [login, setLogin] = useState({
     usuario: "",
