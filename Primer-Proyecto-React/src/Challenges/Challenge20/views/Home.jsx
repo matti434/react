@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
 import CarouselHome from "./HomeComponentes/CarouselHome";
-import Cards from "./ProductosComponentes/Cards";
+import Cards from "./ProductosComponentes/Cards/Cards";
 import Productos from "./Productos"
 
 

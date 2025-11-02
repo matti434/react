@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap';
-import Cards from './ProductosComponentes/Cards';
+import Cards from './ProductosComponentes/Cards/Cards';
 
 const Productos = () => {
   return (
