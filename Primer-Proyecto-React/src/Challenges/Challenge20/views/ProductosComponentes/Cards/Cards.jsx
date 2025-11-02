@@ -11,7 +11,7 @@ const Cards = () => {
                 <Card.Title className="text-center">Producto 1</Card.Title>
                 <Card.Text>
                   <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWopj_HySOIIuDRemrsVhIbsDxsqJ6dV3QVQ&s"
+                    src=""
                     alt="cosadeMosquitos"
                     style={{ height: "200px", objectFit: "cover" }}
                   />
@@ -26,7 +26,7 @@ const Cards = () => {
                 <Card.Title className="text-center">Producto 2</Card.Title>
                 <Card.Text>
                   <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFdoNH-2SdphA1V9QNZFoCBpRfSVRd_4B7MBGLg733q8z7RCOWZduRbifF2oYZ8UrN1g&usqp=CAU"
+                    src=""
                     alt="usb"
                     style={{ height: "200px", objectFit: "cover" }}
                   />
@@ -41,7 +41,7 @@ const Cards = () => {
                 <Card.Title className="text-center">Producto 3</Card.Title>
                 <Card.Text>
                   <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/71WrD-xzSEL._AC_UL600_SR600,600_.jpg"
+                    src=""
                     alt="stanley"
                     style={{ height: "200px", objectFit: "cover" }}
                   />

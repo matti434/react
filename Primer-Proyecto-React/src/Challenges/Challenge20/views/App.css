@@ -13,22 +13,15 @@
 
 body {
   font-family: var(--font-body);
-  background: #ddff00;
-  background: linear-gradient(
-    0deg,
-    rgba(221, 255, 0, 1) 36%,
-    rgba(133, 250, 0, 1) 54%,
-    rgb(7, 80, 238) 83%
-  );
 }
 
 .navbar {
-  background-color: #48fd01 !important;
+  background-color: #ddff00 !important;
 }
 
 .footer-custom,
 footer {
-  background-color: #100ce7 !important;
+  background-color: #ddff00 !important;
 }
 
 .navbar-brand,

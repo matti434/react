@@ -19,12 +19,12 @@ const Menu = () => {
   return (
     <Navbar expand="lg">
       <Container className="d-flex justify-content-between">
-        <Navbar.Brand as={Link} to="/" style={{ fontSize: "1.8rem" }}>MercadoLibre</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" style={{ fontSize: "1.3rem" }}>MercadoLibre</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/" style={{ fontSize: "1.5rem" }}>Home</Nav.Link>
-            <NavDropdown style={{ fontSize: "1.5rem" }} title="Cuenta" id="basic-nav-dropdown">
+            <Nav.Link as={Link} to="/" style={{ fontSize: "1rem" }}>Home</Nav.Link>
+            <NavDropdown style={{ fontSize: "1rem" }} title="Cuenta" id="basic-nav-dropdown">
               <NavDropdown.Item
                onClick={abrirLogin}
                style={{cursor:"pointer"}}
