@@ -20,7 +20,7 @@ const Footer = () => {
           <Col xs={12} lg={4} className="mb-4 mb-lg-0">
             <Stack
               gap={2}
-              className="align-items-center align-items-lg-start text-center text-lg-start"
+              className="align-items-center align-items-lg-start text-center text-lg-start text-black"
             >
               <Image
                 src="https://cdn.worldvectorlogo.com/logos/mercadolibre.svg"
@@ -35,24 +35,24 @@ const Footer = () => {
             </Stack>
           </Col>
           <Col xs={12} lg={4} className="mb-4 mb-lg-0 mt-3">
-            <div className="text-center">
+            <div className="text-center text-black">
               <h5 className="mb-3">Links útiles</h5>
-              <Nav className="flex-column gap-2 justify-content-center">
-                <Nav.Link as={Link} to="/" className="text-white px-0">
+              <Nav className="flex-column gap-3 justify-content-center ">
+                <Nav.Link as={Link} to="/" className="text-black px-0 py-0">
                   Home
                 </Nav.Link>
-                <Nav.Link href="#" className="text-white px-0">
+                <Nav.Link href="#" className="text-black px-0 py-0">
                   Contact
                 </Nav.Link>
                 <span
-                  className="text-white px-0 Nav-Link"
+                  className="text-black px-0 py-0 Nav-Link"
                   onClick={abrirLogin}
                   style={{ cursor: "pointer" }}
                 >
                   Login
                 </span>
                 <span 
-                  className="text-white px-0 Nav-Link"
+                  className="text-black px-0 py-0 Nav-Link"
                   onClick={abrirRegistro}
                   style={{ cursor: "pointer" }}
                 >
@@ -61,7 +61,7 @@ const Footer = () => {
               </Nav>
             </div>
           </Col>
-          <Col xs={12} lg={4} className="text-center text-lg-end mt-3">
+          <Col xs={12} lg={4} className="text-center text-lg-end mt-3 text-black">
             <div>
               <h5 className="mb-3">Contacta con nosotros</h5>
               <p className="mb-1">Email@gmail.com</p>
