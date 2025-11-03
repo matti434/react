@@ -13,14 +13,10 @@
 
 body {
   font-family: var(--font-body);
+  background-color: #f2f3ee !important;
 }
 
 .navbar {
-  background-color: #ddff00 !important;
-}
-
-.footer-custom,
-footer {
   background-color: #ddff00 !important;
 }
 

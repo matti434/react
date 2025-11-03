@@ -8,7 +8,7 @@ const Cards = () => {
           <Col xs={12} md={6} lg={4}>
             <Card as={Link} to="/producto/1" style={{ width: "18rem" }}>
               <Card.Body>
-                <Card.Title className="text-center">Producto 1</Card.Title>
+                <Card.Title className="text-center">#</Card.Title>
                 <Card.Text>
                   <img
                     src=""
@@ -16,14 +16,14 @@ const Cards = () => {
                     style={{ height: "200px", objectFit: "cover" }}
                   />
                 </Card.Text>
-                  <p className="text-center">Mata mosquitos</p> 
+                  <p className="text-center">#</p> 
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} md={6} lg={4}>
             <Card style={{ width: "18rem" }}>
               <Card.Body>
-                <Card.Title className="text-center">Producto 2</Card.Title>
+                <Card.Title className="text-center">#</Card.Title>
                 <Card.Text>
                   <img
                     src=""
@@ -31,14 +31,14 @@ const Cards = () => {
                     style={{ height: "200px", objectFit: "cover" }}
                   />
                 </Card.Text>
-                  <p className="text-center">Mata mosquitos</p>
+                  <p className="text-center">#</p>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} md={6} lg={4}>
             <Card style={{ width: "18rem" }}>
               <Card.Body>
-                <Card.Title className="text-center">Producto 3</Card.Title>
+                <Card.Title className="text-center">#</Card.Title>
                 <Card.Text>
                   <img
                     src=""
@@ -46,7 +46,7 @@ const Cards = () => {
                     style={{ height: "200px", objectFit: "cover" }}
                   />
                 </Card.Text>
-                  <p className="text-center">Mata mosquitos</p>
+                  <p className="text-center">#</p>
                  
               </Card.Body>
             </Card>
