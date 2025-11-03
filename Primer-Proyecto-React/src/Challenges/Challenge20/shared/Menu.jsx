@@ -5,7 +5,6 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import Buscador from "./MenuComponentes/Buscador";
-
 const Menu = () => {
   const navigate = useNavigate();
   
