@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <Container className="mt-4">
-        <div className="text-center text-white mb-5">
+        <div className="text-center text-black mb-5">
           <h1 className="display-4">Bienvenido a MercadoLibre</h1>
           <p className="lead">
             Encuentra los mejores productos al mejor precio

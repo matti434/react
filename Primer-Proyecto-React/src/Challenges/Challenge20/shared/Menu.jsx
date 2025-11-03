@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import Buscador from "./MenuComponentes/Buscador";
 
 const Menu = () => {
   const navigate = useNavigate();
@@ -18,10 +19,16 @@ const Menu = () => {
 
   return (
     <Navbar expand="lg">
-      <Container className="d-flex justify-content-between">
+      <Container className="d-flex justify-content-between align-items-center">
         <Navbar.Brand as={Link} to="/" style={{ fontSize: "1.3rem" }}>MercadoLibre</Navbar.Brand>
+        <div className="d-none d-lg-block position-absolute start-50 traslate-middle-x">
+            <Buscador />
+          </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" className="mt-3 mt-lg-0">
+          <div className="d-lg-none mb-3">
+            <Buscador />
+          </div>
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/" style={{ fontSize: "1rem" }}>Home</Nav.Link>
             <NavDropdown style={{ fontSize: "1rem" }} title="Cuenta" id="basic-nav-dropdown">
