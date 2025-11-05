@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Buscador from "./MenuComponentes/Buscador";
 const Menu = () => {
   const navigate = useNavigate();
-  
+
   const abrirLogin = () => {
     navigate("/?modal=login");
   }
@@ -15,14 +16,21 @@ const Menu = () => {
     navigate("/?modal=registro"); //Misma clave,diferente valor
   }
 
-
   return (
     <Navbar expand="lg">
       <Container className="d-flex justify-content-between align-items-center">
         <Navbar.Brand as={Link} to="/" style={{ fontSize: "1.3rem" }}>MercadoLibre</Navbar.Brand>
+<<<<<<< HEAD
+        
+        <div>
+          <Buscador />
+        </div>
+        
+=======
         <div className="d-none d-lg-block position-absolute start-50 traslate-middle-x">
             <Buscador />
           </div>
+>>>>>>> db4bb4ec9ae43ca03e0bb413411973aa88058cdb
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="mt-3 mt-lg-0">
           <div className="d-lg-none mb-3">
