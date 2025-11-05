@@ -1,0 +1,8 @@
+
+
+const ProductoCard = ({ producto }) => {
+  return (
+
+
+  );
+};
