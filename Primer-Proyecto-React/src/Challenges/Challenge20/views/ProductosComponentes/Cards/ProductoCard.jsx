@@ -1,3 +1,4 @@
+// Components/ProductsComponents/Cards/ProductoCard.jsx
 import { Link } from 'react-router-dom';
 
 const ProductoCard = ({ producto }) => {
@@ -29,6 +30,5 @@ const ProductoCard = ({ producto }) => {
         </Link>
       </div>
     </div>
-
   );
 };
