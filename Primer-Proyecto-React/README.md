@@ -472,3 +472,179 @@ if (!isValid) {
 6. ❌ Si hay errores → los muestra y SE DETIENE <br>
    ---------↓---------
 7. ✅ Si todo está correcto → procesa y LIMPIA formData
+
+---
+---
+
+### aria-label y aria-describedby
+
+id="basic-addon1"
+Identificador único del elemento
+
+Se usa para conectar elementos relacionados
+
+aria-label="Usuario"
+Etiqueta para lectores de pantalla
+
+Cuando no hay texto visible que describa el input
+
+El lector dirá: "Usuario, edit text"
+
+aria-describedby="basic-addon1"
+Conecta el input con su descripción
+
+Le dice al lector: "Este input está descrito por el elemento con id basic-addon1"
+
+El lector leerá: "Usuario, edit text, @"
+
+### FormLogin y Login
+
+Usuario hace click en "Ingresar"
+
+HTML5 detecta form="login-form" en el botón
+
+Busca el form con id="login-form"
+
+Ejecuta el onSubmit de ese form
+
+Se dispara manejarEnvio en FormLogin
+
+### LocalStorage
+
+una pequeña base de datos del navegador
+
+Solo podés acceder con métodos como:
+
+localStorage.setItem("clave", "valor"); // guardar
+localStorage.getItem("clave");          // leer
+localStorage.removeItem("clave");       // borrar
+
+
+Ejemplo:
+
+localStorage.setItem("nombre","Matias");
+console.log(localStorage.getItem("nombre")); // "Matias"
+
+Constantes de "CLAVE_..."
+
+const CLAVE_USUARIOS = 'usuarios';
+const CLAVE_BACKUP = 'backupUsuarios';
+const CLAVE_USUARIO_ACTUAL = 'usuarioActual';
+
+Son como etiquetas dentro del localStorage. Veamos localStorage como un estante de cajas, y cada clave es una etiqueta de la caja:
+
+| Clave (`key`)      | Contenido (`value`)                   |
+| ------------------ | ------------------------------------- |
+| `"usuarios"`       | Lista principal de usuarios           |
+| `"backupUsuarios"` | Copia de seguridad de los usuarios    |
+| `"usuarioActual"`  | Usuario que inició sesión actualmente |
+
+```jsx
+if (!localStorage.getItem(CLAVE_BACKUP)) {
+}
+```
+Aqui pregunto si hay algo guardado en localStorage llamado backupUsuarios.
+ - Si lo hay, no hace nada
+ - si no existe (pasaria la primera vez que inicio la APP) entra al bloque if
+
+``` jsx
+if (!localStorage.getItem(CLAVE_BACKUP)) {
+  localStorage.setItem(CLAVE_BACKUP, JSON.stringify([]));
+}
+```
+Esto crea la clave 'backupUsuarios' y guarda un array vacio convertido en texto ("[]")
+
+**Es como preparar una base de datos vacia para mas adelante**
+
+JSON.stringify() → convierte objeto/array a texto.
+
+JSON.parse() → convierte texto otra vez a objeto.
+
+``` jsx
+const usuarios = [{ nombre: "Matías", email: "matias@gmail.com" }];
+
+// Guardar
+localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+// Leer
+const guardados = JSON.parse(localStorage.getItem("usuarios"));
+console.log(guardados[0].nombre); // "Matías"
+```
+
+
+### API - Flujo basico
+
+El usuario escribe su email y contraseña.
+
+Al enviar el formulario (onSubmit), React hace una petición POST a la API:
+
+fetch("https://api.ejemplo.com/login", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email, password }),
+});
+
+
+La API responde algo como:
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": { "name": "Matías", "email": "matias@example.com" }
+}
+
+
+La app guarda ese token (por ejemplo en localStorage o sessionStorage) y redirige al usuario a otra página.
+
+
+### Por que async en Login
+
+agrego para luego agregar un await para cuando use una API o base de datos
+
+### onChange onSubmit
+
+padre: Login.jsx
+hijo: FormLogin.jsx
+
+El padre le envia las funciones que el hijo va a usar.
+
+El hijo es quien atiende el mostrador y le da una hoja al usuario (usuario,contraseña) el usuario escribe y el hijo muestra lo que el usuario va escribiendo
+(o los cambios que se realizan) con el onChange, el padre copia lo que ve. 
+Al final el hijo avisa con el onSubmit que el usuario envio el formulario y que debe revisarlo, el padre revisa y valida si todo es correcto
+
+### new URLSearchParams(location.search)
+
+Esa parte sirve para leer los parámetros que hay en la URL.
+
+Por ejemplo, si la URL es:
+
+https://midominio.com/?modal=login
+
+ location.search devuelve:
+
+"?modal=login"
+
+
+ new URLSearchParams(location.search) crea un objeto que te deja acceder fácilmente a esos valores.
+
+ ¿Qué hace .get("modal")?
+
+Ese método busca el valor que está asociado al parámetro modal.
+
+new URLSearchParams(location.search).get("modal")
+
+
+En el ejemplo anterior devolvería:
+
+"login"
+
+¿Qué hace la comparación === "login"?
+
+Compara si el valor que obtuvo en la URL es exactamente "login".
+
+Entonces:
+
+Si la URL es ...?modal=login → devuelve true
+
+Si la URL es ...?modal=registro → devuelve false
+
+Si no hay ningún ?modal= en la URL → devuelve false
